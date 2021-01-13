@@ -1,4 +1,4 @@
-require("EventID")
+require("EventSystem/EventID")
 
 EventSystem = {}
 
