@@ -4,7 +4,7 @@ EventSystem = {}
 
 local map
 
-function EventSystem:new()
+function EventSystem:init()
     map = {}
 end
 
@@ -33,12 +33,14 @@ end
 
 function EventSystem:unsubscribe(event_id, callback)
     local lst = map[event_id]
-    if (lst ~= nil) then
-        for k, v in pairs(lst) do
-            if (callback == v) then
-                table.remove(lst, k)
-                return
-            end
+    if (lst == nil) then
+        return
+    end
+    
+    for k, v in pairs(lst) do
+        if (callback == v) then
+            table.remove(lst, k)
+            return
         end
     end
 end
